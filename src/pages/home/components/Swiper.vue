@@ -1,14 +1,19 @@
 <template >
-  <div>
-    it is the swiper
-  </div>
+  <swiper>
+    <swiper-slider>1</swiper-slider>
+    <swiper-slider>2</swiper-slider>
+    <swiper-slider>3</swiper-slider>
+  </swiper>
 </template>
 
 <script>
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import 'swiper/swiper.stylus'
 export default {
-  name: 'HomeSwiper'
+  name: 'HomeSwiper',
+  components: {
+    Swiper,
+    SwiperSlide
+  }
 }
 </script>
 
