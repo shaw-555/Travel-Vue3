@@ -68,7 +68,10 @@ export default {
       li
         display inline-block
         width 20%
+        margin-top 10px
         img
-          width 70px
-          height 70px
+          width 50px
+          height 50px
+        p
+          font-size 8px
 </style>
