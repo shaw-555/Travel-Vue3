@@ -56,7 +56,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  @import '/Users/shaw/travel-vue3/src/assets/styles/varibles.styl'
+  @import '~@/assets/styles/varibles.styl'
   .title
     margin-top .2rem
     line-height .8rem

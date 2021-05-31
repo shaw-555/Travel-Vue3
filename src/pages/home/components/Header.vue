@@ -23,9 +23,10 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  @import '/Users/shaw/travel-vue3/src/assets/styles/varibles.styl'
+  @import '~@/assets/styles/varibles.styl'
 
   .header
+    margin-top -60px
     display: flex
     height: $headerHeight
     line-height: $headerHeight

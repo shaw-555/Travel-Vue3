@@ -1,11 +1,15 @@
 <template>
   <div>
-    it is the city
+    <city-header/>
   </div>
 </template>
 
 <script>
+import CityHeader from './components/Header.vue'
 export default {
-  name: 'City'
+  name: 'City',
+  components: {
+    CityHeader
+  }
 }
 </script>
