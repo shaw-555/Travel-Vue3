@@ -5,6 +5,7 @@
       v-for="item of letters"
       :key="item"
       :ref="item"
+      @click="handleLetterClick"
     >
       {{item}}
     </li>
@@ -16,7 +17,7 @@ import { ref, reactive, computed, watchEffect, onUpdated, defineComponent } from
 export default defineComponent({
   name: 'CityAlphabet',
 
-  setup(props){
+  setup(props, {emit}){
     const test = ref(100);
     const cities = reactive({
 			"A": [{
@@ -3857,6 +3858,11 @@ export default defineComponent({
     console.log(cities);
     console.log('the test is ' + test.value);
 
+    const handleLetterClick = (e) => {
+      emit('change',e.target.innerText)
+      console.log(e.target.innerText)
+    }
+
     for (let item in cities){
       console.log(item);
     }
@@ -3872,7 +3878,8 @@ export default defineComponent({
     return {
       test,
       cities,
-      letters
+      letters,
+      handleLetterClick
     }
   }
 });
