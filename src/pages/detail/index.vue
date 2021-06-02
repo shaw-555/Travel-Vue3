@@ -1,11 +1,21 @@
 <template>
   <div>
-    it is detail
+    <detail-banner/>
+    <detail-header/>
+    <detail-list/>
   </div>
 </template>
 
 <script>
+import DetailBanner from './components/Banner.vue'
+import DetailHeader from'./components/Header.vue'
+import DetailList from'./components/List.vue'
 export default {
-  name: 'Detail'
+  name: 'Detail',
+  components: {
+    DetailBanner,
+    DetailHeader,
+    DetailList
+  }
 }
 </script>
