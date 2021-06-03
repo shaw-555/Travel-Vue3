@@ -2,7 +2,7 @@
   <div>
     <city-header/>
     <city-search/>
-    <city-list/>
+    <city-list :hot="hotCities"/>
     <city-alphabet
       @change="handleLetterChange"
     />
@@ -24,11 +24,10 @@ export default defineComponent({
     CitySearch,
     CityAlphabet
   },
-  setup (props) {
-    const {
-      ctx
-    } = getCurrentInstance();
-
+  setup (props,{ctx}) {
+  
+    
+    let hotCities= reactive([1,2,3])
 
     const letterValue = ref('A');
     const handleLetterChange = (letter) =>{
@@ -38,18 +37,30 @@ export default defineComponent({
     const handleGetDataSucc = (res) => {
       res = res.data
       console.log(res);
+      if (res.ret && res.data) {
+        const data = res.data
+        
+        hotCities = data.hotCities
+        console.log('hotCities1',hotCities);
+        console.log('hotCities2',ctx.hotCities);
+      }
+      return hotCities
     }
 
-    const getCitylInfo = () => {
+    const getCityInfo = () => {
       axios.get('api/city.json').then(handleGetDataSucc)
     }
     onMounted(() => {
-      getCitylInfo()
+      getCityInfo()
     })
+    //  const {
+    //  ctx
+    //} = getCurrentInstance();
     return {
       letterValue,
       handleLetterChange,
-      getCitylInfo
+      getCityInfo,
+      hotCities
     }
   }
 })

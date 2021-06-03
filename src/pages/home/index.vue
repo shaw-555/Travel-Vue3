@@ -1,15 +1,15 @@
 <template>
   <div>
     <home-header/>
-    <home-swiper/>
-    <home-icons/>
+    <home-swiper :list="swiperList2"/>
+    <home-icons :list="iconList"/>
     <home-recommend/>
     <home-weekend/>
   </div>
 </template>
 
 <script>
-import { ref, reactive, computed, watchEffect, onMounted, defineComponent, getCurrentInstance } from 'vue'
+import { ref, reactive, computed, watchEffect, watch ,onMounted, onBeforeMount, onUpdated, defineComponent, getCurrentInstance } from 'vue'
 import HomeHeader from './components/Header'
 import HomeSwiper from './components/Swiper'
 import HomeIcons from './components/Icons'
@@ -29,34 +29,51 @@ export default defineComponent({
     const {
       ctx
     } = getCurrentInstance();
-
-    //console.log(ctx)
+    let swiperList2 = reactive([]);
+    let iconList = ref([]);
+    console.log(ctx)
     const handleGetDataSucc = (res) => {
       res = res.data
       if (res.ret && res.data) {
+        swiperList2 = res.data.swiperList
+        iconList = res.data.iconList
         console.log(res);
+        console.log(11,ctx.swiperList2);
+        console.log(1,swiperList2);
+        console.log(11,ctx.swiperList2);
+        console.log(2,iconList);
+        console.log(22,ctx.iconList);
+        console.log('props',prop)
+        return {
+          swiperList2,
+          iconList
+        }
       }
     }
 
-    const getHomeInfo = () => {
-      axios.get('api/index.json', {
-        params: {
-          id: ctx.$route.params.id
-        }
-      }).then(handleGetDataSucc)
+    let res = getHomeInfo();
+    console.log('test',res)
+    function getHomeInfo() {
+      axios.get('api/index.json').then(ctx.handleGetDataSucc)
     }
-    onMounted(() => {
+
+    onBeforeMount(() => {
       getHomeInfo()
-      console.log(1)
-   })
+    })
+    onUpdated(() => {
+      getHomeInfo()
+    })
     return {
       ctx,
       handleGetDataSucc,
-      getHomeInfo
+      getHomeInfo,
+      swiperList2,
+      iconList
     }
   }
 })
 </script>
 
-<style lang="stylus">
+<style>
+
 </style>
