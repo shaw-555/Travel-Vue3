@@ -2,7 +2,7 @@
   <div>
     <city-header/>
     <city-search/>
-    <city-list :hot="hotCities"/>
+    <city-list :hot="state.hotCities"/>
     <city-alphabet
       @change="handleLetterChange"
     />
@@ -27,7 +27,9 @@ export default defineComponent({
   setup (props,{ctx}) {
   
     
-    let hotCities= reactive([1,2,3])
+    const state= reactive({
+      hotCities: {}
+    })
 
     const letterValue = ref('A');
     const handleLetterChange = (letter) =>{
@@ -40,9 +42,7 @@ export default defineComponent({
       if (res.ret && res.data) {
         const data = res.data
         
-        hotCities = data.hotCities
-        console.log('hotCities1',hotCities);
-        console.log('hotCities2',ctx.hotCities);
+        state.hotCities = data.hotCities
       }
       return hotCities
     }
@@ -60,7 +60,7 @@ export default defineComponent({
       letterValue,
       handleLetterChange,
       getCityInfo,
-      hotCities
+      state
     }
   }
 })

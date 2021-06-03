@@ -1,10 +1,8 @@
 <template>
   <div class="icons">
     <ul class="icon" @click="test">
-      <li>1</li>
       <li v-for="item in list" :key="item.id">
         <img :src="item.imgUrl" :alt="item.id">
-        <div>{{item}}</div>
         <p>{{item.desc}}</p>
       </li>
     </ul>

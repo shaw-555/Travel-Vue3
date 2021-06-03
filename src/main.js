@@ -7,8 +7,9 @@ import router from './router'
 import store from './store'
 const app = createApp(App)
 import axios from 'axios'
+import VueAxios from 'vue-axios'
 require("../static/mock")
 app.config.globalProperties.$axios = axios
 
 
-app.use(store).use(router).mount('#app')
+app.use(store).use(router).use(VueAxios,axios).mount('#app')

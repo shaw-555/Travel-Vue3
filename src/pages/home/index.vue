@@ -1,8 +1,8 @@
 <template>
   <div>
     <home-header/>
-    <home-swiper :list="swiperList2"/>
-    <home-icons :list="iconList"/>
+    <home-swiper :list="state.swiperList"/>
+    <home-icons :list="state.iconList"/>
     <home-recommend/>
     <home-weekend/>
   </div>
@@ -29,25 +29,17 @@ export default defineComponent({
     const {
       ctx
     } = getCurrentInstance();
-    let swiperList2 = reactive([]);
-    let iconList = ref([]);
+    const state = reactive({
+      swiperList:[],
+      iconList:[]
+    })
     console.log(ctx)
     const handleGetDataSucc = (res) => {
       res = res.data
       if (res.ret && res.data) {
-        swiperList2 = res.data.swiperList
-        iconList = res.data.iconList
-        console.log(res);
-        console.log(11,ctx.swiperList2);
-        console.log(1,swiperList2);
-        console.log(11,ctx.swiperList2);
-        console.log(2,iconList);
-        console.log(22,ctx.iconList);
-        console.log('props',prop)
-        return {
-          swiperList2,
-          iconList
-        }
+        state.swiperList = res.data.swiperList
+        state.iconList = res.data.iconList
+       
       }
     }
 
@@ -67,8 +59,7 @@ export default defineComponent({
       ctx,
       handleGetDataSucc,
       getHomeInfo,
-      swiperList2,
-      iconList
+      state
     }
   }
 })
