@@ -34,30 +34,25 @@ export default defineComponent({
     const handleGetDataSucc = (res) => {
       res = res.data
       if (res.ret && res.data) {
-        const data = res.data
-        ctx.sightName = data.sightName
-        ctx.bannerImg = data.bannerImg
-        ctx.gallaryImgs = data.gallaryImgs
-        ctx.list = data.categoryList
-        console.log(ctx.sightName);
+        console.log(res);
       }
     }
 
-    const getDetailInfo = () => {
-      axios.get('api/detail', {
+    const getHomeInfo = () => {
+      axios.get('api/index.json', {
         params: {
           id: ctx.$route.params.id
         }
-      }).then(ctx.handleGetDataSucc)
+      }).then(handleGetDataSucc)
     }
     onMounted(() => {
-      getDetailInfo()
+      getHomeInfo()
       console.log(1)
    })
     return {
       ctx,
       handleGetDataSucc,
-      getDetailInfo
+      getHomeInfo
     }
   }
 })

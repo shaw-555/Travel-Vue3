@@ -3855,22 +3855,16 @@ export default defineComponent({
 				"name": "遵化"
 			}]
     })
-    console.log(cities);
-    console.log('the test is ' + test.value);
 
     const handleLetterClick = (e) => {
       emit('change',e.target.innerText)
       console.log(e.target.innerText)
     }
 
-    for (let item in cities){
-      console.log(item);
-    }
     let letters = computed(() => {
       const arr = [];
       for (let i in cities) {
         arr.push(i)
-        console.log(i);
       }
       return arr
     })

@@ -37,15 +37,11 @@ export default defineComponent({
     }
     const handleGetDataSucc = (res) => {
       res = res.data
-      console.log('res is '+res);
+      console.log(res);
     }
 
     const getCitylInfo = () => {
-      axios.get('api/city', {
-        params: {
-          id: ctx.$route.params.id
-        }
-      }).then(ctx.handleGetDataSucc)
+      axios.get('api/city.json').then(handleGetDataSucc)
     }
     onMounted(() => {
       getCitylInfo()
