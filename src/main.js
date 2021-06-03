@@ -5,6 +5,10 @@ import './assets/styles/border.css'
 import './assets/styles/iconfont.css'
 import router from './router'
 import store from './store'
+const app = createApp(App)
+import axios from 'axios'
+require("../static/mock")
+app.config.globalProperties.$axios = axios
 
 
-createApp(App).use(store).use(router).mount('#app')
+app.use(store).use(router).mount('#app')
