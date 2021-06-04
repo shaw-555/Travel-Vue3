@@ -28,9 +28,10 @@ export default defineComponent({
       console.log(res);
     }
     const getDetailInfo = () => {
-      axios
-        .get('api/detail.json')
-        .then(handleGetDetailInfoSucc)
+      // axios
+      //   .get('api/detail.json')
+      //   .then(handleGetDetailInfoSucc)
+      axios.get('/static/mock/detail').then(handleGetDataSucc)
     }
 
     onMounted(() => {

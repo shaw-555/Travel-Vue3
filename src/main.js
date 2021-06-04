@@ -8,7 +8,7 @@ import store from './store'
 const app = createApp(App)
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-require("../static/mock")
+//require("../static/mock")
 app.config.globalProperties.$axios = axios
 
 

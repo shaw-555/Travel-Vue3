@@ -43,12 +43,14 @@ export default defineComponent({
         const data = res.data
         
         state.hotCities = data.hotCities
+        console.log('state is ',state);
       }
       return hotCities
     }
 
     const getCityInfo = () => {
-      axios.get('api/city.json').then(handleGetDataSucc)
+      //axios.get('api/city.json').then(handleGetDataSucc)
+      axios.get('/static/mock/city').then(handleGetDataSucc)
     }
     onMounted(() => {
       getCityInfo()

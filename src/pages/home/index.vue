@@ -35,24 +35,18 @@ export default defineComponent({
     })
     console.log(ctx)
     const handleGetDataSucc = (res) => {
-      res = res.data
-      if (res.ret && res.data) {
-        state.swiperList = res.data.swiperList
-        state.iconList = res.data.iconList
-       
+      if (res.ret || res.data) {
+        res = res.data
+        state.swiperList = res.swiperList
+        state.iconList = res.iconList
       }
     }
 
-    let res = getHomeInfo();
-    console.log('test',res)
     function getHomeInfo() {
-      axios.get('api/index.json').then(ctx.handleGetDataSucc)
+      axios.get('/static/mock/index').then(handleGetDataSucc)
     }
 
-    onBeforeMount(() => {
-      getHomeInfo()
-    })
-    onUpdated(() => {
+    onMounted(() => {
       getHomeInfo()
     })
     return {

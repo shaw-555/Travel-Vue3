@@ -1,20 +1,42 @@
 // 2-79 行于2021年6月3日添加，用于实现数据mock
-//const path = require('path');
+const path = require('path');
 const proxy = require('http-proxy-middleware');
+//const cityData = require('./static/mock/city.json');
+const indexData = require('./static/mock/index.json');
+const detailData = require('./static/mock/detail.json');
+const goodsData = require('./mock/goods.json');
 module.exports = {
   devServer: {
-    host: 'localhost',//target host
-    port: 8080,
-    // Paths
-    proxy: {
-      '/api': {
-        target: 'http://localhost:8080',
-        changeOrigin: true,
-        ws:true,
-        pathRewrite: {
-          '^/api': '/static/mock'
-        }
-      }
+    // host: 'localhost',//target host
+    // port: 8080,
+    // // Paths
+    // proxy: {
+    //   '/api': {
+    //     target: 'http://localhost:8080',
+    //     changeOrigin: true,
+    //     ws:true,
+    //     pathRewrite: {
+    //       '^/api': '/static/mock'
+    //     }
+    //   }
+    // }
+    before (app) {
+      app.get('/static/mock/city', (req, res) => {
+        return res.json(cityData)
+      });
+      app.get('/static/mock/index', (req, res) => {
+        return res.json(indexData.data)
+      });
+      app.get('/static/mock/detail', (req, res) => {
+        return res.json(detailData)
+      });
+      app.get('/goods/total', (req, res) => {
+        return res.json(goodsData)
+      });
+      app.get('/goods/list', (req, res) => {
+        return res.json(goodsData.goodsList)
+      });
+      
     }
     
   }
