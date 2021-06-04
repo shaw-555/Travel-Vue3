@@ -4,7 +4,7 @@ const proxy = require('http-proxy-middleware');
 const cityData = require('./static/mock/city.json');
 const indexData = require('./static/mock/index.json');
 const detailData = require('./static/mock/detail.json');
-const goodsData = require('./mock/goods.json');
+// const goodsData = require('./mock/goods.json');
 module.exports = {
   devServer: {
     // host: 'localhost',//target host
