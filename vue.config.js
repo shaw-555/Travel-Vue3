@@ -1,7 +1,7 @@
 // 2-79 行于2021年6月3日添加，用于实现数据mock
 const path = require('path');
 const proxy = require('http-proxy-middleware');
-//const cityData = require('./static/mock/city.json');
+const cityData = require('./static/mock/city.json');
 const indexData = require('./static/mock/index.json');
 const detailData = require('./static/mock/detail.json');
 const goodsData = require('./mock/goods.json');
