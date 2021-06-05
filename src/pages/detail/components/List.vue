@@ -2,15 +2,16 @@
   <div>
     <div
       class="item"
-
+      v-for="item in list"
+      :key="item.id"
     >
       <div class="item-title border-bottom">
         <span class="item-title-icon"></span>
-        item.title
+        {{item.title}}
       </div>
-      <!-- <div v-if="item.children" class="item-chilren">
+      <div v-if="item.children" class="item-chilren">
         <detail-list :list="item.children"></detail-list>
-      </div> -->
+      </div>
      </div>
   </div>
 </template>

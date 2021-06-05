@@ -4,13 +4,13 @@
         tag="div"
         to="/"
         class="header-abs"
-        v-show="showAbs">
+        v-show="state.showAbs">
         <div class="iconfont header-abs-back">&#xe624;</div>
       </router-link>
       <div
         class="header-fixed"
-        v-show="!showAbs"
-        :style="opacityStyle"
+        v-show="!state.showAbs"
+        :style="state.opacityStyle"
       >
         <router-link to="/">
           <div class="iconfont header-fixed-back">&#xe624;</div>
@@ -21,9 +21,21 @@
 </template>
 
 <script>
-export default {
-  name: 'DetailHeader'
-}
+import { reactive, onMounted, defineComponent, getCurrentInstance } from 'vue'
+export default defineComponent({
+  name: 'DetailHeader',
+  setup(props) {
+      const state = reactive({
+      showAbs: true,
+      opacityStyle: {
+        opacity: 0
+      }
+    })
+    return {
+      state
+    }
+  }
+})
 </script>
 
 <style lang="stylus" scoped>

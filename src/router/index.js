@@ -12,9 +12,13 @@ const routes = [
     name: 'City',
     component: () => import('../pages/city/index.vue')
   },
-  ,
   {
     path: '/detail',
+    name: 'Detail',
+    component: () => import('../pages/detail/index.vue')
+  },
+  {
+    path: '/detail/:id',
     name: 'Detail',
     component: () => import('../pages/detail/index.vue')
   }
