@@ -35,7 +35,7 @@ export default defineComponent({
       recommendList: [],
       weekendList: []
     })
-    console.log(ctx)
+
     const handleGetDataSucc = (res) => {
       if (res.status && res.data) {
         res = res.data

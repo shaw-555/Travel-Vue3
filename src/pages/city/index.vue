@@ -41,15 +41,11 @@ export default defineComponent({
       console.log(letterValue.value)
     }
     const handleGetDataSucc = (res) => {
-      console.log(res)
-      console.log(res.data)
-      console.log(res.data.hotCities)
       if (res.status && res.data) {
         const data = res.data
         state.hotCities = data.data.hotCities
         state.cities = data.data.cities
       }
-      return hotCities
     }
 
     const getCityInfo = () => {
