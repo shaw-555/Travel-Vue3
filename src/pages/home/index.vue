@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { ref, reactive, computed, watchEffect, watch ,onMounted, onBeforeMount, onUpdated, defineComponent, getCurrentInstance } from 'vue'
+import { ref, toRef, reactive, computed, watchEffect, watch ,onMounted, onBeforeMount, onUpdated, defineComponent, getCurrentInstance } from 'vue'
 import HomeHeader from './components/Header'
 import HomeSwiper from './components/Swiper'
 import HomeIcons from './components/Icons'
@@ -57,7 +57,8 @@ export default defineComponent({
       ctx,
       handleGetDataSucc,
       getHomeInfo,
-      state
+      state,
+      ...toRef(state)
     }
   }
 })

@@ -20,7 +20,7 @@ import CitySearch from './components/Search.vue'
 import CityAlphabet from './components/Alphabet.vue'
 import axios from 'axios'
 export default defineComponent({
-  name: 'City',
+  name: 'theCity',
   components: {
     CityHeader,
     CityList,

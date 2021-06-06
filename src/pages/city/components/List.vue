@@ -1,8 +1,8 @@
 <template>
-  <div class="list" ref="wrapper">
+  <div class="list" v-show="true" ref="wrapper" @click="alert(1)">
     <div>
       <div class="area">
-        <div class="title border-topbottom">当前城市</div>
+        <div class="title border-topbottom" @click="alert(1)">当前城市</div>
         <div class="button-list">
           <div class="buuton-list">
             <div class="button">北京</div>
@@ -10,7 +10,7 @@
         </div>
       </div>
       <div class="area">
-        <div class="title border-topbottom">热门城市</div>
+        <div class="title border-topbottom"><strong>{{computeLength}}</strong>大热门城市</div>
         <div class="button-list">
             <div class="button-wrapper" v-for="item of hot" :key="item.id" >
               <div class="button" >{{item.name}}</div>
@@ -33,18 +33,55 @@
           </div>
       </div>
     </div>
+    <div class="test" ref="test">test</div>
   </div>
 </template>
 
 <script>
-export default {
+import { ref, computed, defineComponent, onMounted} from 'vue';
+import Bscroll from 'better-scroll'
+export default defineComponent({
   name: 'CityList',
   props: {
     hot: Array,
     cities: Object,
     letter: String
+  },
+  setup (props,ctx) {
+    let bscroll = new Bscroll(document.querySelector('.list'))
+    const computeLength = computed(() => {
+      return props.hot.length
+    })
+
+    let wrapper = ref(null)
+    let test = ref(null)
+
+    const computeInnerLength = computed((i) => {
+      return i.length
+    })
+    onMounted(() => {
+      console.log(bscroll);
+      console.log(bscroll.scrollTo);
+      console.log(document.querySelector('.test'));
+      //bscroll.scrollToElement(document.querySelector('.test'))
+      //bscroll.scrollToElement(test)
+      console.log(1);
+    })
+
+
+    // const test = () => {
+    //   console.log(1)
+    //   //bscroll.scrollToElement(document.querySelector('.test'))
+    // }
+
+    return {
+      computeLength,
+      computeInnerLength,
+      wrapper,
+      test
+    }
   }
-}
+})
 </script>
 
 <style lang="stylus" scoped>

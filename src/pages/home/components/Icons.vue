@@ -1,6 +1,6 @@
 <template>
   <div class="icons">
-    <ul class="icon" @click="test">
+    <ul class="icon">
       <li v-for="item in list" :key="item.id">
         <img :src="item.imgUrl" :alt="item.id">
         <p>{{item.desc}}</p>
@@ -19,12 +19,7 @@ export default defineComponent({
     }
   },
   setup(props){
-    const test = () => {
-      console.log(list);
-    }
-    return {
-      test
-    }
+
   }
 })
 </script>
