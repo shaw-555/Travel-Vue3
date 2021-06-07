@@ -1,11 +1,11 @@
 <template>
-  <div class="list" v-show="true" ref="wrapper" @click="alert(1)">
+  <div class="list" ref="wrapper" @click="alert(1)">
     <div>
       <div class="area">
         <div class="title border-topbottom" @click="alert(1)">当前城市</div>
         <div class="button-list">
           <div class="buuton-list">
-            <div class="button">北京</div>
+            <div class="button">{{city}}</div>
           </div>
         </div>
       </div>
@@ -18,7 +18,7 @@
           </div>
         </div>
       </div>
-      <div class="area"
+      <div class="area thelist"
         v-for="(item,key) of cities"
         :key="key"
       >
@@ -40,6 +40,7 @@
 <script>
 import { ref, computed, defineComponent, onMounted} from 'vue';
 import Bscroll from 'better-scroll'
+import { useStore } from 'vuex'
 export default defineComponent({
   name: 'CityList',
   props: {
@@ -48,7 +49,9 @@ export default defineComponent({
     letter: String
   },
   setup (props,ctx) {
-    let bscroll = new Bscroll(document.querySelector('.list'))
+    const store = useStore()
+    const city = computed( () => store.state.city)
+    console.log(city);
     const computeLength = computed(() => {
       return props.hot.length
     })
@@ -60,14 +63,15 @@ export default defineComponent({
       return i.length
     })
     onMounted(() => {
-      console.log(bscroll);
-      console.log(bscroll.scrollTo);
-      console.log(document.querySelector('.test'));
-      //bscroll.scrollToElement(document.querySelector('.test'))
+      let bscroll = new Bscroll(document.querySelector('.thelist'))
+      // console.log(bscroll);
+      // console.log(bscroll.scrollTo);
+      // console.log(document.querySelector('.test'));
+      // console.log(document.querySelector('.list'));
+      // bscroll.scrollToElement(document.querySelector('.test'))
       //bscroll.scrollToElement(test)
       console.log(1);
     })
-
 
     // const test = () => {
     //   console.log(1)
@@ -78,7 +82,8 @@ export default defineComponent({
       computeLength,
       computeInnerLength,
       wrapper,
-      test
+      test,
+      city
     }
   }
 })

@@ -19,6 +19,7 @@ import CityList from './components/List.vue'
 import CitySearch from './components/Search.vue'
 import CityAlphabet from './components/Alphabet.vue'
 import axios from 'axios'
+import { useStore } from 'vuex'
 export default defineComponent({
   name: 'theCity',
   components: {
@@ -28,8 +29,8 @@ export default defineComponent({
     CityAlphabet
   },
   setup (props,{ctx}) {
-  
-    
+    const store = useStore()
+    console.log(store.state);
     const state= reactive({
       hotCities: [],
       cities: {}
