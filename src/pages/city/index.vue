@@ -2,7 +2,7 @@
   <div>
     
     <city-header/>
-    <div>2021年8月15日push的代码</div>
+    <!-- <div>2021年8月15日push的代码</div> -->
     <city-search/>
     <city-list
       :hot="state.hotCities"
